@@ -21,6 +21,18 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .padding()
                 
+                VStack(spacing: 10) {
+                    Image(systemName: "sun.max.fill")
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 180, height: 180)
+                    
+                    Text("72°")
+                        .font(.system(size: 70, weight: .medium))
+                        .foregroundColor(.white)
+                }
+                
                 Spacer()
             }
         }
