@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     var dailyWeatherData: [Day] = DailyWeatherData.dailyForecast
+    var hourlyWeatherData: [Hour] = HourWeatherData.hourlyForecast
     
     var body: some View {
         ZStack {
@@ -47,6 +48,17 @@ struct ContentView: View {
                 .padding(.horizontal, 30)
                 
                 Spacer()
+                
+                ScrollView(.vertical) {
+                    ForEach(hourlyWeatherData, id: \.self){ hour in
+                        
+                        WeatherHourView(hourOfDay: hour.hour, imageName: hour.image, temperature: hour.temp)
+                    }
+                }
+                .padding(.top)
+                .padding(.horizontal, 50)
+                
+                Spacer()
             }
         }
     }
@@ -68,7 +80,7 @@ struct WeatherDayView: View {
         VStack {
             Text(dayOfWeek)
                 .font(.system(size: 20, weight: .medium))
-                .foregroundColor(.black)
+                .foregroundColor(.white)
             
             Image(systemName: imageName)
                 .renderingMode(.original)
@@ -78,7 +90,36 @@ struct WeatherDayView: View {
             
             Text("\(temperature)°")
                 .font(.system(size: 28, weight: .medium))
-                .foregroundColor(.black)
+                .foregroundColor(.white)
+        }
+    }
+}
+
+struct WeatherHourView: View {
+    
+    var hourOfDay: String
+    var imageName: String
+    var temperature: Int
+    
+    var body: some View {
+        HStack(spacing: 20) {
+            Text(hourOfDay)
+                .font(.system(size: 20, weight: .medium))
+                . foregroundColor(.white)
+            
+            Spacer()
+            
+            Image(systemName: imageName)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40, height: 40)
+            
+            Spacer()
+            
+            Text("\(temperature)")
+                .font(.system(size: 20, weight: .medium))
+                .foregroundColor(.white)
         }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E3610F8B26FB72BA00D9F450 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3610F8A26FB72BA00D9F450 /* Day.swift */; };
+		E3610F8E26FC28BA00D9F450 /* Hour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3610F8D26FC28BA00D9F450 /* Hour.swift */; };
 		E3B36D2026FB2AED00FECBA5 /* SwiftyWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B36D1F26FB2AED00FECBA5 /* SwiftyWeatherApp.swift */; };
 		E3B36D2226FB2AED00FECBA5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B36D2126FB2AED00FECBA5 /* ContentView.swift */; };
 		E3B36D2426FB2AED00FECBA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B36D2326FB2AED00FECBA5 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		E3610F8A26FB72BA00D9F450 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		E3610F8D26FC28BA00D9F450 /* Hour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hour.swift; sourceTree = "<group>"; };
 		E3B36D1C26FB2AED00FECBA5 /* SwiftyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B36D1F26FB2AED00FECBA5 /* SwiftyWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyWeatherApp.swift; sourceTree = "<group>"; };
 		E3B36D2126FB2AED00FECBA5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +41,7 @@
 			isa = PBXGroup;
 			children = (
 				E3610F8A26FB72BA00D9F450 /* Day.swift */,
+				E3610F8D26FC28BA00D9F450 /* Hour.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				E3B36D2226FB2AED00FECBA5 /* ContentView.swift in Sources */,
 				E3B36D2026FB2AED00FECBA5 /* SwiftyWeatherApp.swift in Sources */,
 				E3610F8B26FB72BA00D9F450 /* Day.swift in Sources */,
+				E3610F8E26FC28BA00D9F450 /* Hour.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
