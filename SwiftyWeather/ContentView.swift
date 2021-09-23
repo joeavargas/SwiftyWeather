@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var dailyWeatherData: [Day] = DailyWeatherData.dailyForecast
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color.blue, Color("lightBlue")]),
@@ -34,15 +37,14 @@ struct ContentView: View {
                 }
                 .padding(.bottom, 40)
                 
-                HStack(spacing: 30) {
-                    
-                    WeatherDayView(dayOfWeek: "TUE", imageName: "cloud.sun.fill", temperature: 72)
-                    WeatherDayView(dayOfWeek: "WED", imageName: "sun.max.fill", temperature: 71)
-                    WeatherDayView(dayOfWeek: "THU", imageName: "cloud.sun.fill", temperature: 70)
-                    WeatherDayView(dayOfWeek: "FRI", imageName: "sun.max.fill", temperature: 71)
-                    WeatherDayView(dayOfWeek: "SAT", imageName: "cloud.sun.fill", temperature: 72)
-                    
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 30) {
+                        ForEach(dailyWeatherData, id: \.self){ day in
+                            WeatherDayView(dayOfWeek: day.day, imageName: day.image, temperature: day.temp)
+                        }
+                    }
                 }
+                .padding(.horizontal, 30)
                 
                 Spacer()
             }
@@ -66,7 +68,7 @@ struct WeatherDayView: View {
         VStack {
             Text(dayOfWeek)
                 .font(.system(size: 20, weight: .medium))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
             
             Image(systemName: imageName)
                 .renderingMode(.original)
@@ -76,7 +78,7 @@ struct WeatherDayView: View {
             
             Text("\(temperature)°")
                 .font(.system(size: 28, weight: .medium))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
         }
     }
 }
