@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainWeatherView: View {
     
     var dailyWeatherData: [Day] = DailyWeatherData.dailyForecast
     var hourlyWeatherData: [Hour] = HourWeatherData.hourlyForecast
@@ -20,28 +20,13 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                Text("Houston, TX")
-                    .font(.system(size: 32, weight: .medium, design: .default))
-                    .foregroundColor(.white)
-                    .padding()
                 
-                VStack(spacing: 10) {
-                    Image(systemName: "sun.max.fill")
-                        .renderingMode(.original)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 180, height: 180)
-                    
-                    Text("72°")
-                        .font(.system(size: 70, weight: .medium))
-                        .foregroundColor(.white)
-                }
-                .padding(.bottom, 40)
+                CurrentWeatherView(cityName: "Houston", iconName: "sun.max.fill", temp: 72)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 30) {
-                        ForEach(dailyWeatherData, id: \.self){ day in
-                            WeatherDayView(dayOfWeek: day.day, imageName: day.image, temperature: day.temp)
+                        ForEach(hourlyWeatherData, id: \.self){ hour in
+                            HourlyWeatherView(hourOfDay: hour.hour, imageName: hour.image, temperature: hour.temp)
                         }
                     }
                 }
@@ -50,9 +35,8 @@ struct ContentView: View {
                 Spacer()
                 
                 ScrollView(.vertical) {
-                    ForEach(hourlyWeatherData, id: \.self){ hour in
-                        
-                        WeatherHourView(hourOfDay: hour.hour, imageName: hour.image, temperature: hour.temp)
+                    ForEach(dailyWeatherData, id: \.self){ day in
+                        DailyWeatherView(dayOfWeek: day.day, imageName: day.image, temperature: day.temp)
                     }
                 }
                 .padding(.top)
@@ -66,32 +50,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-    }
-}
-
-struct WeatherDayView: View {
-    
-    var dayOfWeek: String
-    var imageName: String
-    var temperature: Int
-    
-    var body: some View {
-        VStack {
-            Text(dayOfWeek)
-                .font(.system(size: 20, weight: .medium))
-                .foregroundColor(.white)
-            
-            Image(systemName: imageName)
-                .renderingMode(.original)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 40, height: 40)
-            
-            Text("\(temperature)°")
-                .font(.system(size: 28, weight: .medium))
-                .foregroundColor(.white)
-        }
+        MainWeatherView()
     }
 }
 
