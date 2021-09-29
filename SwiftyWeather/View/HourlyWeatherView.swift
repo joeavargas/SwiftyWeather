@@ -9,31 +9,27 @@ import SwiftUI
 
 struct HourlyWeatherView: View {
     
-    var hourOfDay: String
-    var imageName: String
-    var temperature: Int
+    @ObservedObject var weatherVM: CityViewViewModel
     
     var body: some View {
-            VStack {
-                Text(hourOfDay)
-                    .font(.system(size: 20, weight: .medium))
-                    .foregroundColor(.white)
-                
-                Image(systemName: imageName)
-                    .renderingMode(.original)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-                
-                Text("\(temperature)°")
-                    .font(.system(size: 28, weight: .medium))
-                    .foregroundColor(.white)
+        ScrollView(.horizontal){
+            HStack(spacing: 20) {
+                ForEach(weatherVM.weather.hourly){ hourly in
+                    let hour = weatherVM.getTimeFor(timestamp: hourly.date)
+                    let icon = returnIconImage(from: hourly.weather[0].icon)
+                    let temp = weatherVM.getTempFor(temp: hourly.temp)
+                    getHourlyView(hour: hour, image: Image(uiImage: icon), temp: temp)
+                }
             }
+            .padding(.horizontal, 30)
+        }
+    }
+    
+    private func getHourlyView(hour: String, image: Image, temp: String) -> some View {
+        VStack(spacing: 20){
+            Text(hour)
+            image
+            Text(temp)
+        }
     }
 }
-
-//struct HourlyWeatherView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HourlyWeatherView()
-//    }
-//}

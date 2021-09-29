@@ -23,14 +23,8 @@ struct MainWeatherView: View {
                 
                 CurrentWeatherView(cityName: "Houston", iconName: "sun.max.fill", temp: 72)
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 30) {
-                        ForEach(hourlyWeatherData, id: \.self){ hour in
-                            HourlyWeatherView(hourOfDay: hour.hour, imageName: hour.image, temperature: hour.temp)
-                        }
-                    }
-                }
-                .padding(.horizontal, 30)
+                
+                
                 
                 Spacer()
                 
