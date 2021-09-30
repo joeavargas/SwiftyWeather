@@ -26,7 +26,11 @@ struct DailyWeatherView: View {
             
             Spacer()
             
-            Image(uiImage: returnIconImage(from: dailyWeather.weather[0].icon))
+            Image(systemName: returnIconImage(from: dailyWeather.weather[0].icon))
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 30, height: 30)
             
             Spacer()
             

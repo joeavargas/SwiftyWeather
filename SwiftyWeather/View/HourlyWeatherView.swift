@@ -18,7 +18,7 @@ struct HourlyWeatherView: View {
                     let hour = weatherVM.getTimeFor(timestamp: hourly.dt)
                     let icon = returnIconImage(from: hourly.weather.count > 0 ? hourly.weather[0].icon : "exclamationmark.triangle")
                     let temp = weatherVM.getTempFor(temp: hourly.temp)
-                    getHourlyView(hour: hour, image: Image(uiImage: icon), temp: temp)
+                    getHourlyView(hour: hour, image: Image(systemName: "\(icon)"), temp: temp)
                 }
             }
             .padding(.horizontal, 30)
@@ -29,7 +29,11 @@ struct HourlyWeatherView: View {
         VStack(spacing: 20){
             Text(hour)
             image
-            Text(temp)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 20, height: 20)
+            Text(temp + "℉")
         }
     }
 }

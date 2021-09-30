@@ -18,7 +18,7 @@ struct CurrentWeatherView: View {
             .padding()
         
         VStack(spacing: 10) {
-            Image(uiImage: returnIconImage(from: weatherVM.weatherIcon))
+            Image(systemName: returnIconImage(from: weatherVM.weatherIcon))
                 .renderingMode(.original)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -32,3 +32,8 @@ struct CurrentWeatherView: View {
     }
 }
 
+struct CurrentWeatherView_Previews: PreviewProvider {
+    static var previews: some View {
+        CurrentWeatherView(weatherVM: CityViewViewModel.init())
+    }
+}
