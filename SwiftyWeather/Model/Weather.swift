@@ -8,18 +8,17 @@
 import Foundation
 
 struct Weather: Codable, Identifiable {
-    var date: Int
+    var dt: Int
     var temp: Double
     var weather: [WeatherDetail]
     
     enum CodinKey: String {
-        case date = "dt"
-        case temp, weather
+        case dt,temp, weather
     }
     
     // Initialize an empty state
     init(){
-        date = 0
+        dt = 0
         temp = 0.0
         weather = []
     }

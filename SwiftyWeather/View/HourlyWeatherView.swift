@@ -15,8 +15,8 @@ struct HourlyWeatherView: View {
         ScrollView(.horizontal){
             HStack(spacing: 20) {
                 ForEach(weatherVM.weather.hourly){ hourly in
-                    let hour = weatherVM.getTimeFor(timestamp: hourly.date)
-                    let icon = returnIconImage(from: hourly.weather[0].icon)
+                    let hour = weatherVM.getTimeFor(timestamp: hourly.dt)
+                    let icon = returnIconImage(from: hourly.weather.count > 0 ? hourly.weather[0].icon : "exclamationmark.triangle")
                     let temp = weatherVM.getTempFor(temp: hourly.temp)
                     getHourlyView(hour: hour, image: Image(uiImage: icon), temp: temp)
                 }

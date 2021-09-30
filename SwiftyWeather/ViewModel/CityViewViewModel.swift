@@ -22,7 +22,7 @@ final class CityViewViewModel: ObservableObject {
     }
     
     var date: String {
-        return time.string(from: Date(timeIntervalSince1970: TimeInterval(weather.current.date)))
+        return time.string(from: Date(timeIntervalSince1970: TimeInterval(weather.current.dt)))
     }
     
     var weatherIcon: String {
@@ -62,7 +62,7 @@ final class CityViewViewModel: ObservableObject {
     }
     
     private func getWeatherInternal(city: String, for urlString: String) {
-        NetworkManager<WeatherResponse>.fetchData(from: URL(string: urlString)!) { result in
+        NetworkManager<WeatherResponse>.fetchData(for: URL(string: urlString)!) { (result) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
@@ -70,6 +70,7 @@ final class CityViewViewModel: ObservableObject {
                 }
             case .failure(let err):
                 print(err.localizedDescription)
+                print(#function)
             }
         }
     }

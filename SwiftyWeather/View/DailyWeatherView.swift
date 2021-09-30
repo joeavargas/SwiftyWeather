@@ -21,7 +21,7 @@ struct DailyWeatherView: View {
     
     private func dailyCell(dailyWeather: DailyWeather) -> some View {
         HStack {
-            Text(weatherVM.getDayFor(timestamp: dailyWeather.date).uppercased())
+            Text(weatherVM.getDayFor(timestamp: dailyWeather.dt).uppercased())
                 .frame(width: 50)
             
             Spacer()

@@ -8,18 +8,17 @@
 import Foundation
 
 struct DailyWeather: Codable, Identifiable {
-    var date: Int
+    var dt: Int
     var temp: Temperature
     var weather: [WeatherDetail]
     
     enum CodingKey: String {
-        case date = "dt"
-        case temp, weather
+        case dt, temp, weather
     }
     
     // Initialize an empty state
     init(){
-        date = 0
+        dt = 0
         temp = Temperature(day: 0.0)
         weather = [WeatherDetail(main: "", description: "", icon: "")]
     }

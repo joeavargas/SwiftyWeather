@@ -9,26 +9,24 @@ import SwiftUI
 
 struct CurrentWeatherView: View {
     
-    var cityName: String
-    var iconName: String
-    var temp: Int
+    @ObservedObject var weatherVM: CityViewViewModel
     
     var body: some View {
-        Text(cityName)
+        Text(weatherVM.city)
             .font(.system(size: 32, weight: .medium, design: .default))
-            .foregroundColor(.white)
+            .foregroundColor(.black)
             .padding()
         
         VStack(spacing: 10) {
-            Image(systemName: iconName)
+            Image(uiImage: returnIconImage(from: weatherVM.weatherIcon))
                 .renderingMode(.original)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 180, height: 180)
             
-            Text("\(temp)°")
+            Text("\(weatherVM.temperature)°")
                 .font(.system(size: 70, weight: .medium))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
         }
         .padding(.bottom, 40)
     }

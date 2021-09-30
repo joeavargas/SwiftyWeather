@@ -9,22 +9,35 @@ import SwiftUI
 
 struct MainWeatherView: View {
     
-    var dailyWeatherData: [Day] = DailyWeatherData.dailyForecast
-    var hourlyWeatherData: [Hour] = HourWeatherData.hourlyForecast
+    @ObservedObject var weatherVM = CityViewViewModel()
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.blue, Color("lightBlue")]),
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack {
+            VStack(spacing: 0) {
                 
-                CurrentWeatherView(cityName: "Houston", iconName: "sun.max.fill", temp: 72)
+                SearchBarView(cityViewModel: weatherVM)
+                    .padding()
+                
+                ScrollView(showsIndicators: false) {
+                    CurrentWeatherView(weatherVM: weatherVM)
+                    
+                    Spacer()
+                    
+                    HourlyWeatherView(weatherVM: weatherVM)
+                    
+                    Spacer()
+                    
+                    DailyWeatherView(weatherVM: weatherVM)
+                    
+                    Spacer()
+                }
                 
             }
         }
+        LinearGradient(gradient: Gradient(colors: [Color.blue, Color("lightBlue")]),
+                       startPoint: .topLeading,
+                       endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -34,31 +47,3 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct WeatherHourView: View {
-    
-    var hourOfDay: String
-    var imageName: String
-    var temperature: Int
-    
-    var body: some View {
-        HStack(spacing: 20) {
-            Text(hourOfDay)
-                .font(.system(size: 20, weight: .medium))
-                . foregroundColor(.white)
-            
-            Spacer()
-            
-            Image(systemName: imageName)
-                .renderingMode(.original)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 40, height: 40)
-            
-            Spacer()
-            
-            Text("\(temperature)")
-                .font(.system(size: 20, weight: .medium))
-                .foregroundColor(.white)
-        }
-    }
-}

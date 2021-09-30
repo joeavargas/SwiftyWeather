@@ -15,11 +15,13 @@ enum NetworkError: Error {
 }
 
 final class NetworkManager<T:Codable> {
-    static func fetchData(from url: URL, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
+    static func fetchData(for url: URL, completion: @escaping (Result<T, NetworkError>) -> Void) {
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             // Handle session error
             guard error == nil else {
+                print("DEBUG: \(error!.localizedDescription)")
+                print(#function)
                 completion(.failure(.error(err: error!.localizedDescription)))
                 return
             }
@@ -27,12 +29,14 @@ final class NetworkManager<T:Codable> {
             // Handle response error
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 completion(.failure(.invalidResponse))
+                print(#function)
                 return
             }
             
             // Handle data
             guard let data = data else {
                 completion(.failure(.invalidData))
+                print(#function)
                 return
             }
             
@@ -40,7 +44,9 @@ final class NetworkManager<T:Codable> {
                 let json = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(json))
             } catch let err {
+                print("DEBUG: \(err.localizedDescription)")
                 completion(.failure(.decodingError(err: err.localizedDescription)))
+                print(#function)
             }
         }.resume()
     }
