@@ -10,11 +10,14 @@ import SwiftUI
 struct SearchBarView: View {
     
     @ObservedObject var cityViewModel: CityViewViewModel
-    @State private var searchCity = "San Francisco"
+    @State private var searchCity = ""
     
     var body: some View {
         HStack {
-            TextField("", text: $searchCity)
+            
+            Spacer()
+            
+            TextField("Search city...", text: $searchCity)
                 .padding(.leading, 20)
             
             Button {
@@ -24,7 +27,7 @@ struct SearchBarView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.blue)
                     
-                    Image(systemName: "location.fill")
+                    Image(systemName: "magnifyingglass")
                 }
             }
             .frame(width: 50, height: 50)
@@ -32,10 +35,6 @@ struct SearchBarView: View {
         .foregroundColor(.white)
         .padding()
         .background(ZStack(alignment: .leading){
-            Image(systemName: "magnifyingglass")
-                .foregroundColor(.black)
-                .padding(.leading, 10)
-            
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.blue.opacity(0.5))
             
