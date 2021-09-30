@@ -16,7 +16,8 @@ struct MainWeatherView: View {
             VStack {
                 
                 SearchBarView(cityViewModel: weatherVM)
-                    .padding()
+                    .padding(.top, 50)
+                    .padding(.horizontal)
                 
                 ScrollView(showsIndicators: false) {
                     CurrentWeatherView(weatherVM: weatherVM)
@@ -33,6 +34,7 @@ struct MainWeatherView: View {
                 }
             }
         }
+        .ignoresSafeArea()
     }
 }
 

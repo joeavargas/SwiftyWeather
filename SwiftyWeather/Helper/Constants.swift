@@ -11,8 +11,8 @@ import SwiftUI
 struct K {
     
     struct Colors {
-        static let searchButtonColor = Color.blue.opacity(0.75)
-        static let searchTextFieldColor = Color.blue.opacity(0.1)
+        static let searchButtonBlueColor = Color.blue.opacity(0.75)
+        static let searchTextFieldBlueColor = Color.blue.opacity(0.1)
     }
-    
+
 }

@@ -27,7 +27,7 @@ struct SearchBarView: View {
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(K.Colors.searchButtonColor)
+                        .fill(K.Colors.searchButtonBlueColor)
                     
                     Image(systemName: "magnifyingglass")
                 }
@@ -38,7 +38,7 @@ struct SearchBarView: View {
         .padding()
         .background(ZStack(alignment: .leading){
             RoundedRectangle(cornerRadius: 10)
-                .fill(K.Colors.searchTextFieldColor)
+                .fill(K.Colors.searchTextFieldBlueColor)
             
         })
     }
