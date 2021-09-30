@@ -31,13 +31,8 @@ struct MainWeatherView: View {
                     
                     Spacer()
                 }
-                
             }
         }
-        LinearGradient(gradient: Gradient(colors: [Color.blue, Color("lightBlue")]),
-                       startPoint: .topLeading,
-                       endPoint: .bottomTrailing)
-            .edgesIgnoringSafeArea(.all)
     }
 }
 
