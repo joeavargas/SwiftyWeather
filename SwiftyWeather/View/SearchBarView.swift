@@ -19,9 +19,11 @@ struct SearchBarView: View {
             
             TextField("Search city...", text: $searchCity)
                 .padding(.leading, 20)
+                .foregroundColor(.secondary)
             
             Button {
                 cityViewModel.city = searchCity
+                searchCity = ""
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
