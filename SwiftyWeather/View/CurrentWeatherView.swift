@@ -16,7 +16,7 @@ struct CurrentWeatherView: View {
         VStack(spacing: 10) {
             Text(weatherVM.city)
                 .font(.system(size: 32, weight: .medium, design: .default))
-                .foregroundColor(.black)
+                .foregroundColor(.none)
                 .padding()
             
             Image(systemName: returnIconImage(from: weatherVM.weatherIcon))
@@ -27,7 +27,7 @@ struct CurrentWeatherView: View {
             
             Text("\(weatherVM.temperature)°")
                 .font(.system(size: 70, weight: .medium))
-                .foregroundColor(.black)
+                .foregroundColor(.none)
         }
         .padding(.bottom, 40)
     }
