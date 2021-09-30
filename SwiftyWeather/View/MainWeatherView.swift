@@ -13,7 +13,7 @@ struct MainWeatherView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 0) {
+            VStack {
                 
                 SearchBarView(cityViewModel: weatherVM)
                     .padding()
