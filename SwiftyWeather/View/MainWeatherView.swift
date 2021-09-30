@@ -23,20 +23,6 @@ struct MainWeatherView: View {
                 
                 CurrentWeatherView(cityName: "Houston", iconName: "sun.max.fill", temp: 72)
                 
-                
-                
-                
-                Spacer()
-                
-                ScrollView(.vertical) {
-                    ForEach(dailyWeatherData, id: \.self){ day in
-                        DailyWeatherView(dayOfWeek: day.day, imageName: day.image, temperature: day.temp)
-                    }
-                }
-                .padding(.top)
-                .padding(.horizontal, 50)
-                
-                Spacer()
             }
         }
     }

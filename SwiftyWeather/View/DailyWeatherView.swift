@@ -9,35 +9,31 @@ import SwiftUI
 
 struct DailyWeatherView: View {
     
-    var dayOfWeek: String
-    var imageName: String
-    var temperature: Int
+    @ObservedObject var weatherVM: CityViewViewModel
     
     var body: some View {
-        HStack(spacing: 20) {
-            Text(dayOfWeek)
-                .font(.system(size: 20, weight: .medium))
-                . foregroundColor(.white)
-            
-            Spacer()
-            
-            Image(systemName: imageName)
-                .renderingMode(.original)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 40, height: 40)
-            
-            Spacer()
-            
-            Text("\(temperature)")
-                .font(.system(size: 20, weight: .medium))
-                .foregroundColor(.white)
+        ForEach(weatherVM.weather.daily){ dailyWeather in
+            LazyVStack {
+                dailyCell(dailyWeather: dailyWeather)
+            }
         }
     }
-}
-
-struct DailyWeatherView_Previews: PreviewProvider {
-    static var previews: some View {
-        DailyWeatherView(dayOfWeek: "10 AM", imageName: "sun.max.fill", temperature: 73)
+    
+    private func dailyCell(dailyWeather: DailyWeather) -> some View {
+        HStack {
+            Text(weatherVM.getDayFor(timestamp: dailyWeather.date).uppercased())
+                .frame(width: 50)
+            
+            Spacer()
+            
+            Image(uiImage: returnIconImage(from: dailyWeather.weather[0].icon))
+            
+            Spacer()
+            
+            Text("\(weatherVM.getTempFor(temp: dailyWeather.temp.day))℉")
+            
+        }
+        .padding(.top)
+        .padding(.horizontal, 50)
     }
 }
