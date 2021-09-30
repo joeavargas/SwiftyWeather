@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E3610F8B26FB72BA00D9F450 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3610F8A26FB72BA00D9F450 /* Day.swift */; };
-		E3610F8E26FC28BA00D9F450 /* Hour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3610F8D26FC28BA00D9F450 /* Hour.swift */; };
 		E3740AA627042AF100B63400 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3740AA527042AF100B63400 /* API.swift */; };
 		E3740AA827042B4600B63400 /* API+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3740AA727042B4600B63400 /* API+Extensions.swift */; };
 		E3740AAA27042F9400B63400 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3740AA927042F9400B63400 /* NetworkManager.swift */; };
@@ -30,8 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E3610F8A26FB72BA00D9F450 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
-		E3610F8D26FC28BA00D9F450 /* Hour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hour.swift; sourceTree = "<group>"; };
 		E3740AA527042AF100B63400 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E3740AA727042B4600B63400 /* API+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Extensions.swift"; sourceTree = "<group>"; };
 		E3740AA927042F9400B63400 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -68,8 +64,6 @@
 		E3610F8C26FB72BE00D9F450 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E3610F8A26FB72BA00D9F450 /* Day.swift */,
-				E3610F8D26FC28BA00D9F450 /* Hour.swift */,
 				E3740AAB27043B2000B63400 /* WeatherResponse.swift */,
 				E3740AAD27043C9300B63400 /* Weather.swift */,
 				E3740AAF27043C9E00B63400 /* WeatherDetail.swift */,
@@ -239,11 +233,9 @@
 				E3818AD62704F507005FC815 /* SearchBarView.swift in Sources */,
 				E3740AB427043CC700B63400 /* Temperature.swift in Sources */,
 				E3740AB227043CBD00B63400 /* DailyWeather.swift in Sources */,
-				E3610F8B26FB72BA00D9F450 /* Day.swift in Sources */,
 				E3A0FF212702E82100676608 /* CurrentWeatherView.swift in Sources */,
 				E3740AA627042AF100B63400 /* API.swift in Sources */,
 				E3740AB027043C9E00B63400 /* WeatherDetail.swift in Sources */,
-				E3610F8E26FC28BA00D9F450 /* Hour.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
