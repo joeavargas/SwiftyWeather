@@ -33,6 +33,18 @@ final class NetworkManager<T:Codable> {
                 return
             }
             
+            switch httpResponse.statusCode {
+            
+            case 200:
+                print("DEBUG: response status OK")
+                
+            case 429:
+                print("DEBUG: Status code 429: temporary blocked due to exceeding of requests limitation of your ")
+                
+            default:
+                break
+            }
+            
             // Handle data
             guard let data = data else {
                 completion(.failure(.invalidData))
