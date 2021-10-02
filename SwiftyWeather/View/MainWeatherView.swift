@@ -34,6 +34,8 @@ struct MainWeatherView: View {
                 }
             }
         }
+        .foregroundColor(Color(#colorLiteral(red: 0.5810584426, green: 0.1285524964, blue: 0.5745313764, alpha: 1)))
+        .background(LinearGradient(gradient: Gradient(colors: [Color.purple, Color.orange]), startPoint: .top, endPoint: .trailing))
         .ignoresSafeArea()
     }
 }
