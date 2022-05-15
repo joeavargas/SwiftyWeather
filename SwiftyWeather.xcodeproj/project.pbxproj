@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E33FBCF22830EFDD00B03A99 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33FBCF12830EFDD00B03A99 /* LocationManager.swift */; };
+		E33FBCF42830F29F00B03A99 /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33FBCF32830F29F00B03A99 /* LocationRequestView.swift */; };
 		E3740AA627042AF100B63400 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3740AA527042AF100B63400 /* API.swift */; };
 		E3740AA827042B4600B63400 /* API+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3740AA727042B4600B63400 /* API+Extensions.swift */; };
 		E3740AAA27042F9400B63400 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3740AA927042F9400B63400 /* NetworkManager.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E33FBCF12830EFDD00B03A99 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E33FBCF32830F29F00B03A99 /* LocationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
 		E3740AA527042AF100B63400 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E3740AA727042B4600B63400 /* API+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Extensions.swift"; sourceTree = "<group>"; };
 		E3740AA927042F9400B63400 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -63,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E33FBCF02830EFBC00B03A99 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				E33FBCF12830EFDD00B03A99 /* LocationManager.swift */,
+			);
+			path = LocationManager;
+			sourceTree = "<group>";
+		};
 		E3610F8C26FB72BE00D9F450 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +105,7 @@
 				E3A0FF222702EB8F00676608 /* HourlyWeatherView.swift */,
 				E3A0FF242702EC0B00676608 /* DailyWeatherView.swift */,
 				E3818AD52704F507005FC815 /* SearchBarView.swift */,
+				E33FBCF32830F29F00B03A99 /* LocationRequestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -138,6 +151,7 @@
 				E3A0FF1E2702E7E000676608 /* ViewModel */,
 				E3A0FF1F2702E7F300676608 /* Helper */,
 				E3740AA427042ADA00B63400 /* Networking */,
+				E33FBCF02830EFBC00B03A99 /* LocationManager */,
 				E3B36D1F26FB2AED00FECBA5 /* SwiftyWeatherApp.swift */,
 				E3B36D2326FB2AED00FECBA5 /* Assets.xcassets */,
 				E3B36D2826FB2AED00FECBA5 /* Info.plist */,
@@ -231,6 +245,7 @@
 				E3740AAC27043B2000B63400 /* WeatherResponse.swift in Sources */,
 				E3740AAE27043C9300B63400 /* Weather.swift in Sources */,
 				E3B36D2026FB2AED00FECBA5 /* SwiftyWeatherApp.swift in Sources */,
+				E33FBCF22830EFDD00B03A99 /* LocationManager.swift in Sources */,
 				E3A0FF232702EB8F00676608 /* HourlyWeatherView.swift in Sources */,
 				E3740AA827042B4600B63400 /* API+Extensions.swift in Sources */,
 				E3818AD42704D9AA005FC815 /* IconManager.swift in Sources */,
@@ -239,6 +254,7 @@
 				E3740AB227043CBD00B63400 /* DailyWeather.swift in Sources */,
 				E3A0FF212702E82100676608 /* CurrentWeatherView.swift in Sources */,
 				E3740AA627042AF100B63400 /* API.swift in Sources */,
+				E33FBCF42830F29F00B03A99 /* LocationRequestView.swift in Sources */,
 				E3740AB027043C9E00B63400 /* WeatherDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

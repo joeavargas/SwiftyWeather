@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct SwiftyWeatherApp: App {
+    
+    @ObservedObject var locationManager = LocationManager.shared
     var body: some Scene {
         WindowGroup {
-            MainWeatherView()
+            if locationManager.userLocation == nil {
+                LocationRequestView()
+            } else {
+                MainWeatherView()
+            }
         }
     }
 }

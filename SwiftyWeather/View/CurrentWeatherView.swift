@@ -14,10 +14,14 @@ struct CurrentWeatherView: View {
     var body: some View {
         
         VStack(spacing: 10) {
-            Text(weatherVM.city)
+            Text(weatherVM.cityAndState)
                 .font(.system(size: 32, weight: .medium, design: .default))
                 .foregroundColor(.none)
-                .padding()
+                .padding(.horizontal)
+            Text(weatherVM.sublocality)
+                .font(.system(size: 16, weight: .medium, design: .default))
+                .foregroundColor(.none)
+                .padding(.bottom)
             
             Image(systemName: returnIconImage(from: weatherVM.weatherIcon))
                 .renderingMode(.original)

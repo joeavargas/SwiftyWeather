@@ -22,7 +22,7 @@ struct SearchBarView: View {
                 .foregroundColor(.secondary)
             
             Button {
-                cityViewModel.city = searchCity
+                cityViewModel.cityAndState = searchCity
                 searchCity = ""
             } label: {
                 ZStack {

@@ -11,11 +11,8 @@ import CoreLocation
 final class CityViewViewModel: ObservableObject {
     
     @Published var weather = WeatherResponse.empty()
-    @Published var city: String = "Houston, TX" {
-        didSet {
-            getLocation()
-        }
-    }
+    @Published var cityAndState: String = ""
+    @Published var sublocality: String = ""
 
     init() {
          getLocation()
@@ -44,9 +41,18 @@ final class CityViewViewModel: ObservableObject {
     }
     
     private func getLocation() {
-        CLGeocoder().geocodeAddressString(city) { placemarks, error in
-            if let places = placemarks, let place = places.first {
-                self.getWeather(coord: place.location?.coordinate)
+        if let userLocation = LocationManager.shared.userLocation {
+            guard let usersLocation = LocationManager.shared.userLocation else {return}
+            CLGeocoder().reverseGeocodeLocation(usersLocation) { placemarks, error in
+                self.cityAndState = (placemarks?.last?.locality)! + ", " + (placemarks?.last?.administrativeArea)!
+                self.sublocality = (placemarks?.last?.subLocality)!
+            }
+            self.getWeather(coord: userLocation.coordinate)
+        } else {
+            CLGeocoder().geocodeAddressString(cityAndState) { placemarks, error in
+                if let places = placemarks, let place = places.first {
+                    self.getWeather(coord: place.location?.coordinate)
+                }
             }
         }
     }
@@ -54,7 +60,7 @@ final class CityViewViewModel: ObservableObject {
     private func getWeather(coord: CLLocationCoordinate2D?){
         if let coord = coord {
             let urlString = API.getUrlFor(lat: coord.latitude, lon: coord.longitude)
-                getWeatherInternal(city: city, for: urlString)
+                getWeatherInternal(city: cityAndState, for: urlString)
         } else {
             // TODO: create error alert
             print("DEBUG: Error fetching weather", #function)
