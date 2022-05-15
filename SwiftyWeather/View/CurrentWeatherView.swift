@@ -18,7 +18,7 @@ struct CurrentWeatherView: View {
                 .font(.system(size: 32, weight: .medium, design: .default))
                 .foregroundColor(.none)
                 .padding(.horizontal)
-            Text(weatherVM.sublocality)
+            Text(weatherVM.sublocality ?? "")
                 .font(.system(size: 16, weight: .medium, design: .default))
                 .foregroundColor(.none)
                 .padding(.bottom)

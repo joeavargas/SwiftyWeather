@@ -60,7 +60,14 @@ final class CityViewViewModel: ObservableObject {
             }
             
             self.getWeather(coord: location.coordinate)
-        }        
+            self.cityAndState = (placemarks?.last?.locality)! + ", " + (placemarks?.last?.administrativeArea)!
+            
+            if placemarks?.last?.subLocality != nil {
+                self.sublocality = (placemarks?.last?.subLocality)!
+            } else {
+                self.sublocality = ""
+            }
+        }
     }
     
     //TODO: Rename to getWeatherForUsersLocation()
