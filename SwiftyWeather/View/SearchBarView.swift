@@ -17,13 +17,19 @@ struct SearchBarView: View {
             
             Spacer()
             
-            TextField("Search city...", text: $searchCity)
-                .padding(.leading, 20)
-                .foregroundColor(.secondary)
+            TextField("Search city...", text: $searchCity) {(_) in} onCommit: {
+                cityViewModel.getWeatherForSearched(city: searchCity)
+                searchCity = ""
+                UIApplication.shared.endEditing()
+            }
+            .padding(.leading, 20)
+            .foregroundColor(.secondary)
+            
             
             Button {
                 cityViewModel.getWeatherForSearched(city: searchCity)
                 searchCity = ""
+                UIApplication.shared.endEditing()
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
@@ -47,5 +53,10 @@ struct SearchBarView: View {
 struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
         SearchBarView(cityViewModel: CityViewViewModel.init())
+    }
+}
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
