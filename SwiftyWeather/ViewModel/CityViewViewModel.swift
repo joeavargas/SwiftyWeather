@@ -13,9 +13,9 @@ final class CityViewViewModel: ObservableObject {
     @Published var weather = WeatherResponse.empty()
     @Published var cityAndState: String = ""
     @Published var sublocality: String = ""
-
+    
     init() {
-         getLocation()
+        getLocation()
     }
     
     var date: String {
@@ -40,6 +40,30 @@ final class CityViewViewModel: ObservableObject {
         return getTempFor(temp: weather.current.temp)
     }
     
+    func getWeatherForSearched(city: String) {
+        let geoCoder = CLGeocoder()
+        
+        geoCoder.geocodeAddressString(city) { placemarks, error in
+            guard error == nil else {
+                print("*** Error in \(#function): \(error!.localizedDescription)")
+                return
+            }
+            
+            guard let placemark = placemarks?.first else {
+                print("*** Error in \(#function): placemark is nil")
+                return
+            }
+            
+            guard let location = placemark.location else {
+                print("*** Error in \(#function): placemark is nil")
+                return
+            }
+            
+            self.getWeather(coord: location.coordinate)
+        }        
+    }
+    
+    //TODO: Rename to getWeatherForUsersLocation()
     private func getLocation() {
         if let userLocation = LocationManager.shared.userLocation {
             guard let usersLocation = LocationManager.shared.userLocation else {return}
@@ -60,7 +84,7 @@ final class CityViewViewModel: ObservableObject {
     private func getWeather(coord: CLLocationCoordinate2D?){
         if let coord = coord {
             let urlString = API.getUrlFor(lat: coord.latitude, lon: coord.longitude)
-                getWeatherInternal(city: cityAndState, for: urlString)
+            getWeatherInternal(city: cityAndState, for: urlString)
         } else {
             // TODO: create error alert
             print("DEBUG: Error fetching weather", #function)
